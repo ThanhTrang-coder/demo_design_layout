@@ -5,52 +5,55 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   //design story item
-  Widget _buildStory() => Stack(
-    children: <Widget>[
-      ClipRRect(
-        borderRadius: BorderRadius.circular(15),
-        child: Image.asset(
-          'assets/avatar.jpg',
-          width: 120,
-          height: 200,
-          fit: BoxFit.cover,
-        ),
-      ),
-      Positioned(
-        top: 8,
-        left: 8,
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(width: 2, color: Colors.blueAccent),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: ClipOval(
-            child: Image.asset('assets/avatar.jpg', width: 35, height: 35,),
+  Widget _buildStory() => Container(
+    margin: const EdgeInsets.fromLTRB(5, 10, 5, 10),
+    child: Stack(
+      children: <Widget>[
+        ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Image.asset(
+            'assets/avatar.jpg',
+            width: 120,
+            height: 200,
+            fit: BoxFit.cover,
           ),
         ),
-      ),
-      const Positioned(
-          bottom: -5,
-          left: 0,
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Text(
-              'User name',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-              ),
+        Positioned(
+          top: 8,
+          left: 8,
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(width: 2, color: Colors.blueAccent),
+              borderRadius: BorderRadius.circular(20),
             ),
-          )
-      ),
-    ],
+            child: ClipOval(
+              child: Image.asset('assets/avatar.jpg', width: 35, height: 35,),
+            ),
+          ),
+        ),
+        const Positioned(
+            bottom: -5,
+            left: 0,
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                'User name',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            )
+        ),
+      ],
+    ),
   );
 
   //design post item
-  Widget _buildPost() => Container(
+  Widget _buildPost() => Padding(
     padding: const EdgeInsets.all(5),
     child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +71,7 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(width: 10,),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   'Lang thang Hà Nội',
@@ -77,12 +80,29 @@ class HomePage extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                Text(
-                  '4 giờ',
-                  style: TextStyle(
-                    color: Colors.grey.shade600,
-                    fontWeight: FontWeight.w400,
-                  ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      '4 giờ',
+                      style: TextStyle(
+                        color: Colors.grey.shade600,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      ' . ',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey.shade700,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.public,
+                      size: 20,
+                      color: Colors.grey,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -107,33 +127,87 @@ class HomePage extends StatelessWidget {
         ),
         Image.asset('assets/avatar.jpg'),
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.adb)
+              onPressed: () {},
+              icon: FaIcon(FontAwesomeIcons.thumbsUp, color: Colors.grey.shade600,),
             ),
             IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.adb)
+              onPressed: () {},
+              icon: FaIcon(FontAwesomeIcons.heart, color: Colors.grey.shade600,),
             ),
             Text(
-              '100',
+              '1.069',
               style: TextStyle(
                 color: Colors.grey.shade700,
-                fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(width: 100,),
+            const SizedBox(width: 50,),
             Text(
               '13 bình luận',
               style: TextStyle(
                 color: Colors.grey.shade700,
-                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Text(
+              ' . ',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.grey.shade700,
+              ),
+            ),
+            Text(
+              '13 lượt chia sẻ',
+              style: TextStyle(
+                color: Colors.grey.shade700,
               ),
             ),
           ],
-        )
+        ),
+        const Divider(
+          height: 1,
+          thickness: 0,
+          indent: 10,
+          endIndent: 10,
+          color: Colors.grey,
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Row(
+                children: [
+                  FaIcon(FontAwesomeIcons.thumbsUp, color: Colors.grey.shade600,),
+                  const SizedBox(width: 5,),
+                  Text('Thích', style: TextStyle(color: Colors.grey.shade600),),
+                ],
+              ),
+              Row(
+                children: [
+                  Icon(Icons.messenger_outline_outlined, color: Colors.grey.shade600,),
+                  const SizedBox(width: 5,),
+                  Text('Bình luận', style: TextStyle(color: Colors.grey.shade600),),
+                ],
+              ),
+              Row(
+                children: [
+                  FaIcon(FontAwesomeIcons.shareFromSquare, color: Colors.grey.shade600, size: 20,),
+                  const SizedBox(width: 5,),
+                  Text('Chia sẻ', style: TextStyle(color: Colors.grey.shade600),),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const Divider(
+          height: 1,
+          thickness: 0,
+          indent: 10,
+          endIndent: 10,
+          color: Colors.grey,
+        ),
       ],
     ),
   );
@@ -147,7 +221,7 @@ class HomePage extends StatelessWidget {
           Container(
             margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ClipOval(
@@ -165,6 +239,10 @@ class HomePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(color: Colors.grey.shade300, width: 2),
                       ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide(color: Colors.grey.shade300, width: 2),
+                      ),
                     ),
                   ),
                 ),
@@ -177,32 +255,41 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Divider(
-            height: 10,
+            height: 5,
             thickness: 8,
             color: Colors.grey.shade300,
           ),
 
           //story listview
-          Container(
-            margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+          SizedBox(
             height: 200,
-            child: ListView.separated(
+            child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (context, index) => _buildStory(),
-              separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(width: 4,);
-              },
             ),
           ),
           Divider(
-            height: 10,
+            height: 5,
             thickness: 8,
             color: Colors.grey.shade300,
           ),
 
           //post listview
-
+          ListView.separated(
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            itemCount: 15,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) => Container(
+              child: _buildPost(),
+            ),
+            separatorBuilder: (BuildContext context, int index) => Divider(
+              height: 5,
+              thickness: 8,
+              color: Colors.grey.shade300,
+            ),
+          ),
         ],
       ),
     );
